@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/bootex
+    username: bootuser
+    password: bootuser
+    driver-class-name: org.mariadb.jdbc.Driver
+  mvc:hiddenmethod:fileter:enable : true
+  servlet:
+    multipart:
+      enabled: true
+      location: C:\\upload
+      max-request-size: 30MB
+      max-file-size: 10MB
+
+      # MyBatis
+      # mapper.xml 위치 지정
+    mybatis:
+      mapper-locations: mybatis-mapper/**/*.xml
+      configuration : map-underscore-to-camel-case
+
+      # model 프로퍼티 camel case 설정
+      type-aliases-package:
+
+
+      # 패키지 명을 생략할 수 있도록 alias 설정
+      mybatis.type-aliases-package=com.atoz_develop.mybatissample.model
+
+      # mapper 로그레벨 설정
+      logging.level.com.atoz_develop.mybatissample.repository=TRACE
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        show_sql: true
+#        format_sql: true
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    org.hibernate.SQL : debug
+    org.hibernate.type: trace
+
+project:
+  shop:
+    upload:
+      path: C:\\projectUpload
